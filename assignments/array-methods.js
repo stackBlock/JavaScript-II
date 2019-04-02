@@ -55,22 +55,38 @@ const runners = [{"id":1,"first_name":"Charmain","last_name":"Seiler","email":"c
 
 // ==== Challenge 1: Use .forEach() ====
 // The event director needs both the first and last names of each runner for their running bibs.  Combine both the first and last names into a new array called fullName. 
-let fullName = [];
-console.log(fullName);
+
+
+let fullName = runners.forEach(function(runner) {
+    console.log(`${runner.first_name} ${runner.last_name}`);
+    // return `${runner.first_name} ${runner.last_name}`;
+
+});
+
 
 // ==== Challenge 2: Use .map() ====
 // The event director needs to have all the runner's first names converted to uppercase because the director BECAME DRUNK WITH POWER. Convert each first name into all caps and log the result
-let allCaps = [];
+
+let allCaps = runners.map(function(currentValue) {
+    return currentValue.first_name.toUpperCase();
+});
 console.log(allCaps); 
 
 // ==== Challenge 3: Use .filter() ====
 // The large shirts won't be available for the event due to an ordering issue.  Get a list of runners with large sized shirts so they can choose a different size. Return an array named largeShirts that contains information about the runners that have a shirt size of L and log the result
-let largeShirts = [];
+
+let largeShirts = runners.filter(function(largeShirt) {
+    return largeShirt.shirt_size === "L";
+});
 console.log(largeShirts);
 
 // ==== Challenge 4: Use .reduce() ====
 // The donations need to be tallied up and reported for tax purposes. Add up all the donations into a ticketPriceTotal array and log the result
-let ticketPriceTotal = [];
+
+let ticketPriceTotal = runners.reduce(function(accumulator, currentValue) {
+    return accumulator + currentValue.donation;
+}, 0);
+
 console.log(ticketPriceTotal);
 
 // ==== Challenge 5: Be Creative ====
@@ -78,6 +94,30 @@ console.log(ticketPriceTotal);
 
 // Problem 1
 
+// Johnson is complaining about not beaing able to see the email addresses and he's to cheap to buy a par of glasses so can you send me a list of the emails in upper case please.
+
+let emailCaps = runners.map(function(johnson) {
+    return johnson.email.toUpperCase();
+});
+console.log(emailCaps); 
+
+
+
 // Problem 2
 
+// Turns out everyone working for Kwimbee, Gigashots, and Skinte haven't payed there donations so they need to be booted from the race. Get a list of those names.
+
+let booted = runners.filter(function(getTheBoot) {
+    return (getTheBoot.company_name === "Kwimbee") || (getTheBoot.company_name === "Gigashots") ||  (getTheBoot.company_name === "Skinte");
+});
+console.log(booted);
+
+
+
 // Problem 3
+// We need a list of anyone who donated over $200 in order to give them a special t-shirt.
+
+let specialShirt = runners.filter(function(tShirt) {
+    return tShirt.donation > 200;
+});
+console.log(specialShirt);
