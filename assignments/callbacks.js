@@ -2,6 +2,8 @@
 
 const items = ['Pencil', 'Notebook', 'yo-yo', 'Gum'];
 
+const hope = ['Pencil', 'Notebook', 'yo-yo', 'Notebook', 'Gum']
+
 
 
   //Given this problem: 
@@ -75,7 +77,25 @@ contains("Gum", items, function(answer) {
 /* STRETCH PROBLEM */
 
 function removeDuplicates(array, cb) {
+  let newArray = array;
+  for (let i = 0; i < array.length; i++) {
+
+    for (let k = 0; k < array.length; k++) {
+      if (array[i] === array[k]) {
+
+        newArray = newArray.filter(function(same) {
+          return same != array[i];
+
+        })
+      }
+    }  
+  }
+  return cb(newArray);
   // removeDuplicates removes all duplicate values from the given array.
   // Pass the duplicate free array to the callback function.
   // Do not mutate the original array.
 }
+
+removeDuplicates(hope, function(noDupes) {
+  console.log(noDupes);
+})
